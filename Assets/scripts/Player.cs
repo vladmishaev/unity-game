@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public float speed;
     public float jumpHeight;
+    int quantityElixir = 20;
 
     public Transform groundCheck;
 
@@ -82,5 +83,12 @@ public class Player : MonoBehaviour
         isGrounded = colliders.Length > 1;
 
         return isGrounded;
+    }
+
+    public void TakeAwayElixir(int elixir)
+    {
+        quantityElixir -= elixir;
+       
+        print(quantityElixir);
     }
 }
