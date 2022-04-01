@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     Animator anim;
 
+    public Main main; 
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
 
     void AnimationRun()
     {
-         
+
         if (Input.GetAxis("Horizontal") != 0)
         {
             anim.SetBool("isRunning", true);
@@ -88,7 +89,18 @@ public class Player : MonoBehaviour
     public void TakeAwayElixir(int elixir)
     {
         quantityElixir -= elixir;
-       
+
         print(quantityElixir);
+        if(quantityElixir < 0)
+        {
+            Invoke("Lose", 1f);
+        }
     }
+
+    void Lose()
+    {
+        main.GetComponent<Main>().EndScene();
+    }
+
+
 }
